@@ -17,11 +17,6 @@ module.exports = {
       serif: ["Garamond", "serif"],
     },
     extend: {
-      colors: {
-        blue: {
-          500: "#1a73e8",
-        },
-      },
       spacing: {
         128: "32rem",
       },
