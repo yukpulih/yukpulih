@@ -53,7 +53,7 @@ const Home: NextPage = () => {
             </p>
           </a>
         </div>
-        <PrimaryButton buttonText="Read more" />
+        <PrimaryButton bgColor="green" size="lg" buttonText="Read more" />
       </main>
 
       <footer className={styles.footer}>
