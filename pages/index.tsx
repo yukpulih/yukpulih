@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Navbar from "../components/navigation/navbar/navbar.component";
 
 const Home: NextPage = () => {
   return (
@@ -10,7 +11,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Navbar sampleTextProp="test" />
       <h1>I&apos;m so proud to be involved in this amazing project!!</h1>
+      <button className="outline-dashed outline-2 outline-offset-2">
+        Button B
+      </button>
     </div>
   );
 };
