@@ -2,6 +2,54 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Navbar from "../components/navigation/navbar/navbar.component";
 
+const menuProps = [
+  {
+    name: "Workshop",
+    url: "#",
+    subMenu: [
+      {
+        name: "Category 1",
+        url: "#",
+        subSubMenu: [
+          { name: "Sub Sub-menu 1", url: "#" },
+          { name: "Sub Sub-menu 2", url: "#" },
+        ],
+      },
+    ],
+  },
+  {
+    name: "About",
+    url: "#",
+    subMenu: [
+      {
+        name: "Sub Menu 1",
+        url: "#",
+        subSubMenu: null,
+      },
+      {
+        name: "Sub Menu 2",
+        url: "#",
+        subSubMenu: null,
+      },
+    ],
+  },
+  {
+    name: "Blog",
+    url: "#",
+    subMenu: null,
+  },
+  {
+    name: "Community",
+    url: "#",
+    subMenu: null,
+  },
+  {
+    name: "Donate",
+    url: "#",
+    subMenu: null,
+  },
+];
+
 const Home: NextPage = () => {
   return (
     <div>
@@ -11,11 +59,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar sampleTextProp="test" />
-      <h1>I&apos;m so proud to be involved in this amazing project!!</h1>
-      <button className="outline-dashed outline-2 outline-offset-2">
-        Button B
-      </button>
+      <Navbar menu={menuProps} />
     </div>
   );
 };
