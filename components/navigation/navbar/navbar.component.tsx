@@ -38,18 +38,47 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
           />
           <span className="text-lg ml-2 font-bold">Yuk Pulih</span>
         </div>
-        <ul className="md:flex hidden items-center text-small gap-6">
+        <ul className="md:flex hidden items-center text-small gap-5">
           <Menu />
         </ul>
-        <div className="md:block hidden">
-          <NavButton sampleTextProp="#" />
-        </div>
-        <div className="md:hidden ml-auto">
+        <div className="md:flex md:items-center gap-3 hidden">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            strokeWidth={1.5}
+            strokeWidth={2}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+            />
+          </svg>
+
+          <NavButton sampleTextProp="#" />
+        </div>
+        <div className="md:hidden ml-auto flex items-center gap-5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={3}
             stroke="currentColor"
             className="w-6 h-6"
           >
@@ -63,7 +92,7 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
         {/* Mobile View */}
         <ul className="md:hidden absolute left-0 top-0 bottom-0 right-0 my-20 w-full">
           <Menu />
-          <div className="px-5">
+          <div className="px-5 pb-5">
             <NavButton sampleTextProp="#" />
           </div>
         </ul>

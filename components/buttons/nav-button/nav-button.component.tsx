@@ -4,7 +4,7 @@ export type NavButtonProps = {
 
 const NavButton: React.FC<NavButtonProps> = ({ sampleTextProp }) => {
   return (
-    <button className="bg-green-900 rounded-lg text-gray-300 px-6 py-1">
+    <button className="w-full bg-green-900 rounded-lg text-gray-300 px-6 py-1">
       Login
     </button>
   );
