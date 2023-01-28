@@ -1,22 +1,19 @@
-export const SubSubMenu = () => {
+export type SubSubMenuProps = {
+  name: string;
+  url: string;
+};
+
+export const SubSubMenu = ({ name, url }: SubSubMenuProps) => {
   return (
-    <>
+    <ul>
       <li className="my-5 md:hidden">
-        <div className="w-full flex items-center mr-3 ml-1">
-          Your Brain on Porn
-        </div>
+        <a href={url}>
+          <div className="hover:text-green-900 hover:underline cursor-pointer w-full flex items-center mr-3 ml-1">
+            {name}
+          </div>
+        </a>
       </li>
-      <li className="my-5 md:hidden">
-        <div className="w-full flex items-center mr-3 ml-1">
-          The Meaningful Life
-        </div>
-      </li>
-      <li className="my-5 md:hidden">
-        <div className="w-full flex items-center mr-3 ml-1">
-          Money Management
-        </div>
-      </li>
-    </>
+    </ul>
   );
 };
 

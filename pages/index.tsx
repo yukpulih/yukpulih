@@ -15,6 +15,14 @@ const menuProps = [
           { name: "Sub Sub-menu 2", url: "#" },
         ],
       },
+      {
+        name: "Category 2",
+        url: "#",
+        subSubMenu: [
+          { name: "Sub Sub-menu 1", url: "#" },
+          { name: "Sub Sub-menu 2", url: "#" },
+        ],
+      },
     ],
   },
   {
@@ -22,12 +30,15 @@ const menuProps = [
     url: "#",
     subMenu: [
       {
-        name: "Sub Menu 1",
+        name: "Category 1",
         url: "#",
-        subSubMenu: null,
+        subSubMenu: [
+          { name: "Sub Sub-menu 1", url: "#" },
+          { name: "Sub Sub-menu 2", url: "#" },
+        ],
       },
       {
-        name: "Sub Menu 2",
+        name: "Category 2",
         url: "#",
         subSubMenu: null,
       },
