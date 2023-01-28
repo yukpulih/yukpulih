@@ -3,7 +3,7 @@ import SubSubMenu from "./subsubmenu.component";
 export const SubMenu = () => {
   return (
     <>
-      <li className="my-3 md:hidden ">
+      <li className="my-5 md:hidden ">
         <div className="w-full flex items-center mr-3 uppercase md:normal-case">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +25,7 @@ export const SubMenu = () => {
           <SubSubMenu />
         </ul>
       </li>
-      <li className="my-3 md:hidden ">
+      <li className="my-5 md:hidden ">
         <div className="w-full flex items-center mr-3 uppercase md:normal-case">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +44,7 @@ export const SubMenu = () => {
           Basic Skills
         </div>
       </li>
-      <li className="my-3 md:hidden ">
+      <li className="my-5 md:hidden ">
         <div className="w-full flex items-center mr-3 uppercase md:normal-case">
           <svg
             xmlns="http://www.w3.org/2000/svg"

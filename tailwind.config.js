@@ -8,14 +8,11 @@ module.exports = {
   theme: {
     screens: {
       xs: "375px",
-      sm: "600px",
-      md: "900px",
-      lg: "1200px",
-      xl: "1536px",
+      sm: "768px",
+      md: "879px",
+      lg: "1024px",
+      xl: "1200px",
     },
-  },
-  theme: {
-    extend: {},
   },
   plugins: [],
 };

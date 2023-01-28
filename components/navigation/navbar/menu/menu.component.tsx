@@ -3,7 +3,7 @@ import SubMenu from "./submenu.component";
 export const Menu = () => {
   return (
     <>
-      <li className="md:border-b-0 md:font-normal md:px-0 md:my-auto px-5 border-solid border-b-[1px] border-gray-300 mb-5 pb-5 font-medium text-gray-800">
+      <li className="md:border-b-0 md:font-normal md:px-0 md:my-auto px-5 border-solid border-b-[1px] border-gray-300 mb-7 pb-7 font-medium text-gray-800">
         <a href="">
           <div className="w-full flex items-center md:mt-5 uppercase md:normal-case">
             <svg
@@ -41,7 +41,7 @@ export const Menu = () => {
           <SubMenu />
         </ul>
       </li>
-      <li className="md:border-b-0 md:font-normal md:px-0 md:my-auto px-5 border-solid border-b-[1px] border-gray-300 mb-5 pb-5 font-medium text-gray-800">
+      <li className="md:border-b-0 md:font-normal md:px-0 md:my-auto px-5 border-solid border-b-[1px] border-gray-300 mb-7 pb-7 font-medium text-gray-800">
         <a href="">
           <div className="w-full flex items-center md:mt-5 uppercase md:normal-case">
             <svg
@@ -80,17 +80,17 @@ export const Menu = () => {
         </ul>
       </li>
       <a href="">
-        <li className="md:border-b-0 md:font-normal md:px-0 md:my-auto md:mt-5 px-5 border-solid border-b-[1px] border-gray-300 mb-5 pb-5 font-medium text-gray-800 uppercase md:normal-case">
+        <li className="md:border-b-0 md:font-normal md:px-0 md:my-auto md:mt-5 px-5 border-solid border-b-[1px] border-gray-300 mb-7 pb-7 font-medium text-gray-800 uppercase md:normal-case">
           Blog
         </li>
       </a>
       <a href="">
-        <li className="md:border-b-0 md:font-normal md:px-0 md:my-auto md:mt-5 px-5 border-solid border-b-[1px] border-gray-300 mb-5 pb-5 font-medium text-gray-800 uppercase md:normal-case">
+        <li className="md:border-b-0 md:font-normal md:px-0 md:my-auto md:mt-5 px-5 border-solid border-b-[1px] border-gray-300 mb-7 pb-7 font-medium text-gray-800 uppercase md:normal-case">
           Community
         </li>
       </a>
       <a href="">
-        <li className="md:border-b-0 md:font-normal md:px-0 md:my-auto md:mt-5 px-5 border-solid border-b-[1px] border-gray-300 mb-5 pb-5 font-medium text-gray-800 uppercase md:normal-case">
+        <li className="md:border-b-0 md:font-normal md:px-0 md:my-auto md:mt-5 px-5 border-solid border-b-[1px] border-gray-300 mb-7 pb-7 font-medium text-gray-800 uppercase md:normal-case">
           Donate
         </li>
       </a>
