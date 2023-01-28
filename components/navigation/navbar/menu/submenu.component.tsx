@@ -34,9 +34,9 @@ export const SubMenu = ({ name, url, subSubMenu }: SubMenuProps) => {
           </button>
           <div className="ml-5">
             {isOpen
-              ? subSubMenu.map((item) => {
+              ? subSubMenu.map((item, idx) => {
                   return (
-                    <div>
+                    <div key={`${item.name}-${idx}`}>
                       <SubSubMenu name={item.name} url={item.url} />
                     </div>
                   );

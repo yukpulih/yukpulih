@@ -41,9 +41,9 @@ export const Menu = ({ name, url, subMenu }: MenuProps) => {
             <ChevronDownIcon className="hidden md:block w-3 h-3 ml-1 mt-1" />
           </button>
           {isOpen
-            ? subMenu.map((item) => {
+            ? subMenu.map((item, idx) => {
                 return (
-                  <div className="ml-5">
+                  <div key={`${item.name}-${idx}`} className="ml-5">
                     <SubMenu
                       name={item.name}
                       url={item.url}

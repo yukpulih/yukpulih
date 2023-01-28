@@ -48,9 +48,14 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
           <span className="text-lg ml-2 font-bold">Yuk Pulih</span>
         </div>
         <div className="md:flex hidden items-center mt-2 text-small gap-5">
-          {menu?.map((item) => {
+          {menu?.map((item, idx) => {
             return (
-              <Menu name={item.name} url={item.url} subMenu={item.subMenu} />
+              <Menu
+                key={`${item.name}-${idx}`}
+                name={item.name}
+                url={item.url}
+                subMenu={item.subMenu}
+              />
             );
           })}
         </div>
@@ -79,9 +84,14 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
         {/* Mobile View */}
         {isOpen && (
           <div className="md:hidden absolute left-0 top-0 bottom-0 right-0 my-20 w-full">
-            {menu?.map((item) => {
+            {menu?.map((item, idx) => {
               return (
-                <Menu name={item.name} url={item.url} subMenu={item.subMenu} />
+                <Menu
+                  key={`${item.name}-${idx}`}
+                  name={item.name}
+                  url={item.url}
+                  subMenu={item.subMenu}
+                />
               );
             })}
             <div className="px-5 pb-7">
