@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import NavButton from "../../buttons/nav-button/nav-button.component";
+import Button from "./button/button.component";
 import Menu from "./menu/menu.component";
 
 import {
@@ -65,7 +65,7 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
             <MagnifyingGlassIcon className="h-5 w-5 text-green-900" />
           </div>
 
-          <NavButton sampleTextProp="#" />
+          <Button />
         </div>
         <div className="md:hidden ml-auto flex items-center gap-5">
           <MagnifyingGlassIcon className="h-5 w-5 text-green-900 cursor-pointer" />
@@ -95,7 +95,7 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
               );
             })}
             <div className="px-5 pb-7">
-              <NavButton sampleTextProp="#" />
+              <Button />
             </div>
           </div>
         )}
