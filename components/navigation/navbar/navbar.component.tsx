@@ -68,16 +68,16 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
           <NavButton sampleTextProp="#" />
         </div>
         <div className="md:hidden ml-auto flex items-center gap-5">
-          <MagnifyingGlassIcon className="h-5 w-5 text-green-900" />
+          <MagnifyingGlassIcon className="h-5 w-5 text-green-900 cursor-pointer" />
           {isOpen ? (
             <XMarkIcon
               onClick={() => setIsOpen(!isOpen)}
-              className="h-7 w-7 text-green-900"
+              className="h-7 w-7 text-green-900 cursor-pointer"
             />
           ) : (
             <Bars3Icon
               onClick={() => setIsOpen(!isOpen)}
-              className="h-7 w-7 text-green-900"
+              className="h-7 w-7 text-green-900 cursor-pointer"
             />
           )}
         </div>

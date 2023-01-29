@@ -7,7 +7,16 @@ const base: NavbarProps = {
       url: "#",
       subMenu: [
         {
-          name: "Category 1",
+          name: "Fundamentals",
+          url: "#",
+          subSubMenu: [
+            { name: "Your Brain on Pron", url: "#" },
+            { name: "Effective Recovery from Porn Addiction", url: "#" },
+            { name: "Time Management", url: "#" },
+          ],
+        },
+        {
+          name: "Loremipsum",
           url: "#",
           subSubMenu: [
             { name: "Sub Sub-menu 1", url: "#" },
@@ -15,7 +24,7 @@ const base: NavbarProps = {
           ],
         },
         {
-          name: "Category 2",
+          name: "Dolorsitamet",
           url: "#",
           subSubMenu: [
             { name: "Sub Sub-menu 1", url: "#" },
@@ -29,15 +38,22 @@ const base: NavbarProps = {
       url: "#",
       subMenu: [
         {
-          name: "Category 1",
+          name: "Our Mission",
           url: "#",
-          subSubMenu: [
-            { name: "Sub Sub-menu 1", url: "#" },
-            { name: "Sub Sub-menu 2", url: "#" },
-          ],
+          subSubMenu: null,
         },
         {
-          name: "Category 2",
+          name: "Our Team",
+          url: "#",
+          subSubMenu: null,
+        },
+        {
+          name: "Financials",
+          url: "#",
+          subSubMenu: null,
+        },
+        {
+          name: "Careers",
           url: "#",
           subSubMenu: null,
         },

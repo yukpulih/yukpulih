@@ -40,19 +40,20 @@ export const Menu = ({ name, url, subMenu }: MenuProps) => {
 
             <ChevronDownIcon className="hidden md:block w-3 h-3 ml-1 mt-1" />
           </button>
-          {isOpen
-            ? subMenu.map((item, idx) => {
+          {isOpen ? (
+            <div className="ml-5 md:absolute md:top-0 md:mt-[60px] md:ml-0 md:bg-gray-200 md:w-52">
+              {subMenu.map((item, idx) => {
                 return (
-                  <div key={`${item.name}-${idx}`} className="ml-5">
-                    <SubMenu
-                      name={item.name}
-                      url={item.url}
-                      subSubMenu={item.subSubMenu}
-                    />
-                  </div>
+                  <SubMenu
+                    key={`${item.name}-${idx}`}
+                    name={item.name}
+                    url={item.url}
+                    subSubMenu={item.subSubMenu}
+                  />
                 );
-              })
-            : null}
+              })}
+            </div>
+          ) : null}
         </li>
       </ul>
     );

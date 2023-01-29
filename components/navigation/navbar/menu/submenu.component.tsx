@@ -20,10 +20,10 @@ export const SubMenu = ({ name, url, subSubMenu }: SubMenuProps) => {
   if (subSubMenu !== null) {
     return (
       <ul>
-        <li className="my-5 md:hidden">
+        <li className="my-5 md:my-0">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="hover:text-green-900 hover:underline cursor-pointer w-full flex items-center mr-3 uppercase md:normal-case"
+            className="md:flex md:items-center md:justify-between md:p-2 hover:text-green-900 hover:underline md:hover:no-underline md:hover:bg-gray-300 cursor-pointer w-full flex items-center mr-3 md:mr-0 uppercase md:normal-case"
           >
             {isOpen ? (
               <ChevronDownIcon className="md:hidden w-4 h-4 mr-2" />
@@ -31,28 +31,31 @@ export const SubMenu = ({ name, url, subSubMenu }: SubMenuProps) => {
               <ChevronRightIcon className="md:hidden w-4 h-4 mr-2" />
             )}
             {name}
+            <ChevronRightIcon className="hidden md:block w-4 h-4" />
           </button>
-          <div className="ml-5">
-            {isOpen
-              ? subSubMenu.map((item, idx) => {
-                  return (
-                    <div key={`${item.name}-${idx}`}>
-                      <SubSubMenu name={item.name} url={item.url} />
-                    </div>
-                  );
-                })
-              : null}
-          </div>
+          {isOpen ? (
+            <div className="ml-5 md:absolute md:-mt-10 md:ml-52 md:w-52 md:bg-gray-200">
+              {subSubMenu.map((item, idx) => {
+                return (
+                  <SubSubMenu
+                    key={`${item.name}-${idx}`}
+                    name={item.name}
+                    url={item.url}
+                  />
+                );
+              })}
+            </div>
+          ) : null}
         </li>
       </ul>
     );
   } else {
     return (
       <ul>
-        <li className="my-5 md:hidden">
+        <li className="my-5 md:my-0">
           <a
             href={url}
-            className="hover:text-green-900 hover:underline cursor-pointer w-full flex items-center mr-3"
+            className="md:p-2 md:hover:no-underline md:hover:bg-gray-300 hover:text-green-900 hover:underline cursor-pointer w-full flex items-center mr-3"
           >
             {name}
           </a>
