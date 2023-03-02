@@ -1,97 +1,64 @@
-import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
-import { useEffect, useRef, useState } from "react";
+import { ChevronRightIcon } from "@heroicons/react/24/solid";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 
 import SubMenu from "./submenu.component";
 
-export type MenuProps = {
-  name: string;
+type MenuProps = {
+  title: string;
   url: string;
-  subMenu:
-    | {
-        name: string;
-        url: string;
-        subSubMenu:
-          | {
-              name: string;
-              url: string;
-            }[]
-          | null;
-      }[]
-    | null;
+  submenu: { [key: string]: string }[] | null;
+  depthLevel: number;
 };
 
-export const Menu = ({ name, url, subMenu }: MenuProps) => {
+const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef<HTMLLIElement>(null);
 
-  useEffect(() => {
-    let handler = (e: MouseEvent | TouchEvent): void => {
-      e.preventDefault();
-      const target = e.target as HTMLElement;
-
-      if (!menuRef?.current?.contains(target)) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handler);
-
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-  });
-
-  if (subMenu !== null) {
-    return (
-      <ul>
-        <li
-          ref={menuRef}
-          className="md:border-b-0 md:font-normal md:px-0 md:my-auto px-5 border-solid border-b-[1px] border-gray-300 mb-7 pb-7 font-medium text-gray-800"
+  return (
+    <ul>
+      <li
+        className={`${
+          depthLevel === 0
+            ? "border-b-[1px] border-solid border-gray-300"
+            : null
+        }`}
+      >
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className={`${
+            depthLevel === 0 || submenu !== null
+              ? "font-semibold uppercase"
+              : null
+          } ${
+            depthLevel === 0 ? "p-5" : null
+          } flex items-center cursor-pointer  w-full text-left pl-5 pb-2 hover:underline`}
         >
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="w-full hover:cursor-pointer hover:text-green-900 hover:underline md:hover:no-underline flex items-center md:mt-5 uppercase md:normal-case"
-          >
-            {isOpen ? (
-              <ChevronDownIcon className="md:hidden w-4 h-4 mr-2" />
-            ) : (
-              <ChevronRightIcon className="md:hidden w-4 h-4 mr-2" />
-            )}
-            {name}
-
-            <ChevronDownIcon className="hidden md:block w-3 h-3 ml-1 mt-1" />
-          </button>
-          {isOpen ? (
-            <div className="ml-5 md:absolute md:top-0 md:mt-[60px] md:ml-0 md:bg-gray-200 md:w-52">
-              {subMenu.map((item, idx) => {
-                return (
-                  <SubMenu
-                    key={`${item.name}-${idx}`}
-                    name={item.name}
-                    url={item.url}
-                    subSubMenu={item.subSubMenu}
-                  />
-                );
-              })}
-            </div>
-          ) : null}
-        </li>
-      </ul>
-    );
-  } else {
-    return (
-      <ul>
-        <li className="md:border-b-0 md:font-normal md:px-0 md:my-auto px-5 border-solid border-b-[1px] border-gray-300 mb-7 pb-7 font-medium text-gray-800">
-          <a
-            href={url}
-            className="w-full hover:cursor-pointer hover:text-green-900 hover:underline flex items-center md:mt-5 uppercase md:normal-case md:hover:no-underline"
-          >
-            {name}
-          </a>
-        </li>
-      </ul>
-    );
-  }
+          {/* Icon for Mobile/Table View Start */}
+          <span className={`${submenu === null ? "hidden" : null} w-5`}>
+            <ChevronRightIcon
+              className={`${
+                isOpen ? "rotate-90" : "rotate-0"
+              } duration-200 w-4 h-4`}
+            />
+          </span>
+          {/* Icon for Mobile/Table View End */}
+          {title}
+        </button>
+        {isOpen && (
+          <AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="ml-5"
+            >
+              <SubMenu menu={submenu} depthLevel={depthLevel} />
+            </motion.div>
+          </AnimatePresence>
+        )}
+      </li>
+    </ul>
+  );
 };
 
 export default Menu;

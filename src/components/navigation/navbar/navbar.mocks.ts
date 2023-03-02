@@ -3,76 +3,92 @@ import { NavbarProps } from "./navbar.component";
 const base: NavbarProps = {
   menu: [
     {
-      name: "Workshop",
+      title: "Workshop",
       url: "#",
-      subMenu: [
+      submenu: [
         {
-          name: "Fundamentals",
+          title: "Fundamentals",
           url: "#",
-          subSubMenu: [
-            { name: "Your Brain on Pron", url: "#" },
-            { name: "Effective Recovery from Porn Addiction", url: "#" },
-            { name: "Time Management", url: "#" },
+          submenu: [
+            { title: "Your Brain on Pron", url: "#", submenu: null },
+            {
+              title: "Effective Recovery from Porn Addiction",
+              url: "#",
+              submenu: null,
+            },
+            { title: "Time Management", url: "#", submenu: null },
+            {
+              title: "News and Research",
+              url: "#",
+              submenu: [
+                {
+                  title: "Effective Recovery from Porn Addiction and anything",
+                  url: "#",
+                  submenu: null,
+                },
+                { title: "Erectile Dysfunction", url: "#", submenu: null },
+              ],
+            },
           ],
         },
         {
-          name: "Loremipsum",
+          title: "Loremipsum",
           url: "#",
-          subSubMenu: [
-            { name: "Sub Sub-menu 1", url: "#" },
-            { name: "Sub Sub-menu 2", url: "#" },
+          submenu: [
+            { title: "Sub Sub-menu 1", url: "#", submenu: null },
+            { title: "Sub Sub-menu 2", url: "#", submenu: null },
           ],
         },
         {
-          name: "Dolorsitamet",
+          title: "Dolorsitamet",
           url: "#",
-          subSubMenu: [
-            { name: "Sub Sub-menu 1", url: "#" },
-            { name: "Sub Sub-menu 2", url: "#" },
+          submenu: [
+            { title: "Sub Sub-menu 1", url: "#", submenu: null },
+            { title: "Sub Sub-menu 2", url: "#", submenu: null },
           ],
         },
       ],
     },
     {
-      name: "About",
+      title: "About",
       url: "#",
-      subMenu: [
+      submenu: [
         {
-          name: "Our Mission",
+          title: "Our Mission",
           url: "#",
-          subSubMenu: null,
+          submenu: null,
         },
         {
-          name: "Our Team",
+          title: "Our Team",
           url: "#",
-          subSubMenu: null,
+          submenu: null,
         },
         {
-          name: "Financials",
+          title: "Financials",
           url: "#",
-          subSubMenu: null,
+          submenu: null,
         },
         {
-          name: "Careers",
+          title: "Careers",
           url: "#",
-          subSubMenu: null,
+          submenu: null,
         },
       ],
     },
     {
-      name: "Blog",
+      title: "Blog",
       url: "#",
-      subMenu: null,
+      submenu: null,
     },
     {
-      name: "Community",
+      title: "Community",
       url: "#",
-      subMenu: null,
+      submenu: null,
     },
     {
-      name: "Donate",
+      title: "Donate",
       url: "#",
-      subMenu: null,
+      submenu: null,
     },
   ],
 };
