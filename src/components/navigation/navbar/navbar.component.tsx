@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 
 import {
@@ -42,7 +43,15 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
         {/* Menu Start */}
         <div className="md:flex hidden items-center mt-2 text-small gap-5">
           {menu.map((item, index) => {
-            return <p key={`title-${index}`}>{item.title}</p>;
+            return (
+              <Menu
+                key={`menu-${index}`}
+                title={item.title}
+                url={item.url}
+                submenu={item.submenu}
+                depthLevel={depthLevel}
+              />
+            );
           })}
         </div>
         {/* Menu End */}
@@ -76,24 +85,40 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
         {/* Xmark and Bar Button for Mobile/Tablet View End */}
 
         {/* Menu for Mobile/Tablet View Start */}
-        {isOpen && (
-          <div className="md:hidden absolute left-0 top-0 bottom-0 right-0 my-[60px] w-full">
-            {menu.map((item, index) => {
-              return (
-                <Menu
-                  key={`menu-${index}`}
-                  title={item.title}
-                  url={item.url}
-                  submenu={item.submenu}
-                  depthLevel={depthLevel}
-                />
-              );
-            })}
-            <div className="p-5">
-              <LoginButton />
-            </div>
-          </div>
-        )}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{
+                height: 0,
+                opacity: 0,
+              }}
+              animate={{
+                height: "auto",
+                opacity: 1,
+              }}
+              exit={{
+                height: 0,
+                opacity: 0,
+              }}
+              className="md:hidden absolute left-0 top-0 bottom-0 right-0 my-[60px] w-full"
+            >
+              {menu.map((item, index) => {
+                return (
+                  <Menu
+                    key={`menu-${index}`}
+                    title={item.title}
+                    url={item.url}
+                    submenu={item.submenu}
+                    depthLevel={depthLevel}
+                  />
+                );
+              })}
+              <div className="p-5">
+                <LoginButton />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
         {/* Menu for Mobile/Tablet View End */}
         {/* Mobile/Tablet View End */}
       </div>
