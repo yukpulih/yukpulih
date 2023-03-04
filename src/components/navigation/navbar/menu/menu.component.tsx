@@ -1,6 +1,6 @@
 import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import SubMenu from "./submenu.component";
 
@@ -12,12 +12,30 @@ type MenuProps = {
 };
 
 const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
+  const menuRef = useRef<HTMLUListElement>(null);
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    const handler = (e: MouseEvent | TouchEvent): void => {
+      e.preventDefault();
+      const target = e.target as HTMLElement;
+
+      if (!menuRef?.current?.contains(target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
+
   return (
-    <ul>
+    <ul ref={menuRef}>
       {submenu !== null ? (
-        <>
+        <div>
           {/* Menu Item Start */}
           <li className="hidden md:block">
             <button
@@ -25,12 +43,16 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
               className={`${
                 depthLevel === 0
                   ? `${
-                      isOpen ? "md:bg-green-800 md:text-gray-300" : ""
-                    } md:flex md:items-center md:h-8 md:hover:bg-green-800 md:hover:text-gray-300`
+                      isOpen
+                        ? "md:border-solid md:border-t-transparent md:border-y-4 md:border-green-800"
+                        : ""
+                    } md:flex md:items-center md:h-8 md:transition-all md:ease-in-out md:duration-200 md:hover:border-solid md:hover:border-t-transparent md:hover:border-y-4 md:hover:border-green-800`
                   : `${
-                      isOpen ? "md:font-semibold" : ""
-                    } md:flex md:justify-between md:w-56 md:py-2 md:bg-gray-200 md:hover:text-green-800 md:hover:text-green-600`
-              } md:px-2`}
+                      isOpen
+                        ? "md:font-semibold md:bg-green-800 md:text-gray-300"
+                        : ""
+                    } md:flex md:justify-between md:w-56 md:py-2 md:px-6 md:font-semibold md:text-sm md:hover:bg-green-800 md:hover:text-gray-300`
+              }`}
             >
               {title}
               <span className="md:w-5">
@@ -45,20 +67,13 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
             <AnimatePresence>
               {isOpen && (
                 <motion.div
-                  initial={{
-                    height: 0,
-                    opacity: 0,
-                  }}
-                  animate={{
-                    height: "auto",
-                    opacity: 1,
-                  }}
-                  exit={{
-                    height: 0,
-                    opacity: 0,
-                  }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                   className={`${
-                    depthLevel === 0 ? "md:top-[60px]" : "md:ml-56 md:-mt-10"
+                    depthLevel === 0
+                      ? "md:top-[60px] md:-ml-6"
+                      : "md:ml-56 md:-mt-[48px]"
                   } md:absolute`}
                 >
                   <SubMenu menu={submenu} depthLevel={depthLevel} />
@@ -98,18 +113,9 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
             <AnimatePresence>
               {isOpen && (
                 <motion.div
-                  initial={{
-                    height: 0,
-                    opacity: 0,
-                  }}
-                  animate={{
-                    height: "auto",
-                    opacity: 1,
-                  }}
-                  exit={{
-                    height: 0,
-                    opacity: 0,
-                  }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                   className="ml-5"
                 >
                   <SubMenu menu={submenu} depthLevel={depthLevel} />
@@ -118,7 +124,7 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
             </AnimatePresence>
           </li>
           {/* Menu Item for Mobile/Tablet View End */}
-        </>
+        </div>
       ) : (
         <>
           {/* Menu Item Start */}
@@ -128,12 +134,16 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
               className={`${
                 depthLevel === 0
                   ? `${
-                      isOpen ? "md:bg-green-800 md:text-gray-300" : ""
-                    } md:flex md:items-center md:h-8 md:hover:bg-green-800 md:hover:text-gray-300`
+                      isOpen
+                        ? "md:border-solid md:border-t-transparent md:border-y-4 md:border-green-800"
+                        : ""
+                    } md:flex md:items-center md:h-8 md:transition-all md:ease-in-out md:duration-200 md:hover:border-solid md:hover:border-t-transparent md:hover:border-y-4 md:hover:border-green-800`
                   : `${
-                      isOpen ? "md:font-semibold" : ""
-                    } md:flex md:justify-between md:w-56 md:py-2 md:bg-gray-200 md:hover:text-green-800 md:hover:text-green-600`
-              } md:px-2`}
+                      isOpen
+                        ? "md:font-semibold md:bg-green-800 md:text-gray-300"
+                        : ""
+                    } md:flex md:justify-between md:w-56 md:py-2 md:px-6 md:font-semibold md:text-sm md:hover:bg-green-800 md:hover:text-gray-300`
+              }`}
             >
               {title}
             </a>

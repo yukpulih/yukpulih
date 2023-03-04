@@ -41,7 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
         {/* Title & Logo End */}
 
         {/* Menu Start */}
-        <div className="md:flex hidden items-center text-small">
+        <div className="md:flex hidden md:items-center md:text-small md:gap-2">
           {menu.map((item, index) => {
             return (
               <Menu
@@ -88,18 +88,9 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{
-                height: 0,
-                opacity: 0,
-              }}
-              animate={{
-                height: "auto",
-                opacity: 1,
-              }}
-              exit={{
-                height: 0,
-                opacity: 0,
-              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               className="md:hidden absolute left-0 top-0 bottom-0 right-0 my-[60px] w-full"
             >
               {menu.map((item, index) => {
