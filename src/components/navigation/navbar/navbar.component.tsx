@@ -41,7 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
         {/* Title & Logo End */}
 
         {/* Menu Start */}
-        <div className="md:flex hidden items-center mt-2 text-small gap-5">
+        <div className="md:flex hidden items-center text-small">
           {menu.map((item, index) => {
             return (
               <Menu

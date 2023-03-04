@@ -1,4 +1,4 @@
-import { ChevronRightIcon } from "@heroicons/react/24/solid";
+import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
@@ -18,6 +18,56 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
     <ul>
       {submenu !== null ? (
         <>
+          {/* Menu Item Start */}
+          <li className="hidden md:block">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className={`${
+                depthLevel === 0
+                  ? `${
+                      isOpen ? "md:bg-green-800 md:text-gray-300" : ""
+                    } md:flex md:items-center md:h-8 md:hover:bg-green-800 md:hover:text-gray-300`
+                  : `${
+                      isOpen ? "md:font-semibold" : ""
+                    } md:flex md:justify-between md:w-56 md:py-2 md:bg-gray-200 md:hover:text-green-800 md:hover:text-green-600`
+              } md:px-2`}
+            >
+              {title}
+              <span className="md:w-5">
+                {depthLevel === 0 ? (
+                  <ChevronDownIcon className="md:w-4 md:h-4 md:mt-1 md:ml-1" />
+                ) : (
+                  <ChevronRightIcon className="md:w-4 md:h-4 md:mt-1 md:ml-1" />
+                )}
+              </span>
+            </button>
+
+            <AnimatePresence>
+              {isOpen && (
+                <motion.div
+                  initial={{
+                    height: 0,
+                    opacity: 0,
+                  }}
+                  animate={{
+                    height: "auto",
+                    opacity: 1,
+                  }}
+                  exit={{
+                    height: 0,
+                    opacity: 0,
+                  }}
+                  className={`${
+                    depthLevel === 0 ? "md:top-[60px]" : "md:ml-56 md:-mt-10"
+                  } md:absolute`}
+                >
+                  <SubMenu menu={submenu} depthLevel={depthLevel} />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </li>
+          {/* Menu Item End */}
+
           {/* Menu Item for Mobile/Tablet View Start */}
           <li
             className={`${
@@ -34,7 +84,7 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
                   : null
               } ${
                 depthLevel === 0 ? "p-5" : null
-              } flex items-center cursor-pointer  w-full text-left pl-5 pb-2 hover:underline`}
+              } flex items-center cursor-pointer  w-full text-left pl-5 pb-5 hover:underline`}
             >
               <span className={`${submenu === null ? "hidden" : null} w-5`}>
                 <ChevronRightIcon
@@ -55,27 +105,10 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
                   animate={{
                     height: "auto",
                     opacity: 1,
-                    transition: {
-                      height: {
-                        duration: 0.4,
-                      },
-                      opacity: {
-                        duration: 0.25,
-                        delay: 0.15,
-                      },
-                    },
                   }}
                   exit={{
                     height: 0,
                     opacity: 0,
-                    transition: {
-                      height: {
-                        duration: 0.4,
-                      },
-                      opacity: {
-                        duration: 0.25,
-                      },
-                    },
                   }}
                   className="ml-5"
                 >
@@ -88,6 +121,25 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
         </>
       ) : (
         <>
+          {/* Menu Item Start */}
+          <li className="hidden md:block">
+            <a
+              href={url}
+              className={`${
+                depthLevel === 0
+                  ? `${
+                      isOpen ? "md:bg-green-800 md:text-gray-300" : ""
+                    } md:flex md:items-center md:h-8 md:hover:bg-green-800 md:hover:text-gray-300`
+                  : `${
+                      isOpen ? "md:font-semibold" : ""
+                    } md:flex md:justify-between md:w-56 md:py-2 md:bg-gray-200 md:hover:text-green-800 md:hover:text-green-600`
+              } md:px-2`}
+            >
+              {title}
+            </a>
+          </li>
+          {/* Menu Item End */}
+
           {/* Menu Item for Mobile/Tablet View Start */}
           <li
             className={`${
@@ -103,7 +155,7 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
                   : null
               } ${
                 depthLevel === 0 ? "p-5" : null
-              } flex items-center cursor-pointer  w-full text-left pl-5 pb-2 hover:underline`}
+              } flex items-center cursor-pointer  w-full text-left pl-5 pb-5 hover:underline`}
               href={url}
             >
               {title}

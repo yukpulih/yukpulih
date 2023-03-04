@@ -7,7 +7,7 @@ const base: NavbarProps = {
       url: "#",
       submenu: [
         {
-          title: "Fundamentals",
+          title: "Fundamental Skills",
           url: "#",
           submenu: [
             { title: "Your Brain on Pron", url: "#", submenu: null },
@@ -32,7 +32,7 @@ const base: NavbarProps = {
           ],
         },
         {
-          title: "Loremipsum",
+          title: "Basic Skills",
           url: "#",
           submenu: [
             { title: "Sub Sub-menu 1", url: "#", submenu: null },
@@ -40,7 +40,7 @@ const base: NavbarProps = {
           ],
         },
         {
-          title: "Dolorsitamet",
+          title: "Specific Skills",
           url: "#",
           submenu: [
             { title: "Sub Sub-menu 1", url: "#", submenu: null },
