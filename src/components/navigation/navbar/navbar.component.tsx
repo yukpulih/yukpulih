@@ -21,7 +21,8 @@ export type NavbarProps = {
 
 const Navbar: React.FC<NavbarProps> = ({ menu }) => {
   const depthLevel = 0;
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMobOpen, setIsMobOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
     <nav className="flex items-center bg-white text-green-900 border-solid border-b-[1px] border-gray-300 h-[60px]">
@@ -41,28 +42,79 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
         {/* Title & Logo End */}
 
         {/* Menu Start */}
-        <div className="md:flex hidden md:items-center md:text-small md:gap-2">
-          {menu.map((item, index) => {
-            return (
-              <Menu
-                key={`menu-${index}`}
-                title={item.title}
-                url={item.url}
-                submenu={item.submenu}
-                depthLevel={depthLevel}
-              />
-            );
-          })}
-        </div>
+        {!isSearchOpen && (
+          <div className="md:flex hidden md:items-center md:text-small md:gap-2">
+            {menu.map((item, index) => {
+              return (
+                <Menu
+                  key={`menu-${index}`}
+                  title={item.title}
+                  url={item.url}
+                  submenu={item.submenu}
+                  depthLevel={depthLevel}
+                />
+              );
+            })}
+          </div>
+        )}
         {/* Menu End */}
 
         {/* Login and Search Button Start */}
-        <div className="md:flex md:items-center gap-5 md:gap-3 hidden">
-          <div className="cursor-pointer flex items-center justify-between gap-2 w-32 px-3 h-8 bg-gray-200 hover:bg-gray-300 border border-solid border-gray-200 rounded-lg">
-            <span className="text-green-900 font-medium">Search</span>
-            <MagnifyingGlassIcon className="h-5 w-5 text-green-900" />
-          </div>
-          <LoginButton />
+        <div className="hidden md:block">
+          {!isSearchOpen && (
+            <AnimatePresence>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="md:flex md:items-center md:gap-3"
+              >
+                <button
+                  onClick={() => setIsSearchOpen(!isSearchOpen)}
+                  className="cursor-pointer flex items-center justify-between gap-2 w-32 px-3 h-8 bg-gray-200 hover:bg-gray-300 border border-solid border-gray-200 rounded-lg"
+                >
+                  <span className="text-green-900 font-medium">Search</span>
+                  <MagnifyingGlassIcon className="h-5 w-5 text-green-900" />
+                </button>
+                <LoginButton />
+              </motion.div>
+            </AnimatePresence>
+          )}
+
+          {isSearchOpen && (
+            <AnimatePresence>
+              <motion.div
+                initial={{
+                  width: 0,
+                  opacity: 0,
+                }}
+                animate={{
+                  width: "auto",
+                  opacity: 1,
+                }}
+                exit={{
+                  width: 0,
+                  opacity: 0,
+                }}
+                className="md:flex"
+              >
+                <form className="md:flex md:items-center">
+                  <MagnifyingGlassIcon className="md:absolute md:h-4 md:w-4 md:ml-2 md:text-gray-500" />
+                  <input
+                    placeholder="Search for workshops, articles, and videos"
+                    type="text"
+                    className="md:w-96 md:px-3 md:pl-8 md:mr-3 md:h-7 md:bg-gray-200 md:border-solid md:border-gray-200 md:rounded-lg md:text-sm"
+                  />
+                </form>
+                <button onClick={() => setIsSearchOpen(!isSearchOpen)}>
+                  <XMarkIcon
+                    onClick={() => setIsSearchOpen(!setIsSearchOpen)}
+                    className="md:h-7 md:w-7 md:text-gray-500 md:cursor-pointer"
+                  />
+                </button>
+              </motion.div>
+            </AnimatePresence>
+          )}
         </div>
         {/* Login and Search Button End */}
 
@@ -70,14 +122,14 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
         {/* Xmark and Bar Button for Mobile/Tablet View Start */}
         <div className="md:hidden ml-auto flex items-center gap-5">
           <MagnifyingGlassIcon className="h-5 w-5 text-green-900 cursor-pointer" />
-          {isOpen ? (
+          {isMobOpen ? (
             <XMarkIcon
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => setIsMobOpen(!isMobOpen)}
               className="h-7 w-7 text-green-900 cursor-pointer"
             />
           ) : (
             <Bars3Icon
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => setIsMobOpen(!isMobOpen)}
               className="h-7 w-7 text-green-900 cursor-pointer"
             />
           )}
@@ -86,7 +138,7 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
 
         {/* Menu for Mobile/Tablet View Start */}
         <AnimatePresence>
-          {isOpen && (
+          {isMobOpen && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
