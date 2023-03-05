@@ -84,33 +84,22 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
           {isSearchOpen && (
             <AnimatePresence>
               <motion.div
-                initial={{
-                  width: 0,
-                  opacity: 0,
-                }}
-                animate={{
-                  width: "auto",
-                  opacity: 1,
-                }}
-                exit={{
-                  width: 0,
-                  opacity: 0,
-                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 className="md:flex"
               >
                 <form className="md:flex md:items-center">
                   <MagnifyingGlassIcon className="md:absolute md:h-4 md:w-4 md:ml-2 md:text-gray-500" />
                   <input
+                    autoFocus
                     placeholder="Search for workshops, articles, and videos"
                     type="text"
                     className="md:w-96 md:px-3 md:pl-8 md:mr-3 md:h-7 md:bg-gray-200 md:border-solid md:border-gray-200 md:rounded-lg md:text-sm"
                   />
                 </form>
                 <button onClick={() => setIsSearchOpen(!isSearchOpen)}>
-                  <XMarkIcon
-                    onClick={() => setIsSearchOpen(!setIsSearchOpen)}
-                    className="md:h-7 md:w-7 md:text-gray-500 md:cursor-pointer"
-                  />
+                  <XMarkIcon className="md:h-7 md:w-7 md:text-gray-500 md:cursor-pointer" />
                 </button>
               </motion.div>
             </AnimatePresence>

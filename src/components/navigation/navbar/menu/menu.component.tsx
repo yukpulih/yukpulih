@@ -90,7 +90,7 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
               depthLevel === 0
                 ? "border-b-[1px] border-solid border-gray-300"
                 : null
-            } md:hidden`}
+            } md:hidden bg-white`}
           >
             <button
               onClick={() => setIsMobOpen(!isMobOpen)}
@@ -166,7 +166,7 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
               depthLevel === 0
                 ? "border-b-[1px] border-solid border-gray-300"
                 : null
-            } md:hidden`}
+            } md:hidden bg-white`}
           >
             <a
               className={`${
