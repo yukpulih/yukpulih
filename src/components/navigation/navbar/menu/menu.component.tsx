@@ -12,16 +12,17 @@ type MenuProps = {
 };
 
 const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
-  const menuRef = useRef<HTMLUListElement>(null);
-  const [isOpen, setIsOpen] = useState(false);
+  const desMenuRef = useRef<HTMLLIElement>(null);
+  const [isDesOpen, setIsDesOpen] = useState(false);
+  const [isMobOpen, setIsMobOpen] = useState(false);
 
   useEffect(() => {
     const handler = (e: MouseEvent | TouchEvent): void => {
       e.preventDefault();
       const target = e.target as HTMLElement;
 
-      if (!menuRef?.current?.contains(target)) {
-        setIsOpen(false);
+      if (!desMenuRef?.current?.contains(target)) {
+        setIsDesOpen(false);
       }
     };
 
@@ -33,22 +34,22 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
   });
 
   return (
-    <ul ref={menuRef}>
+    <ul>
       {submenu !== null ? (
-        <div>
+        <>
           {/* Menu Item Start */}
-          <li className="hidden md:block">
+          <li ref={desMenuRef} className="hidden md:block">
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => setIsDesOpen(!isDesOpen)}
               className={`${
                 depthLevel === 0
                   ? `${
-                      isOpen
+                      isDesOpen
                         ? "md:border-solid md:border-t-transparent md:border-y-4 md:border-green-800"
                         : ""
                     } md:flex md:items-center md:h-8 md:transition-all md:ease-in-out md:duration-200 md:hover:border-solid md:hover:border-t-transparent md:hover:border-y-4 md:hover:border-green-800`
                   : `${
-                      isOpen
+                      isDesOpen
                         ? "md:font-semibold md:bg-green-800 md:text-gray-300"
                         : ""
                     } md:flex md:justify-between md:w-56 md:py-2 md:px-6 md:font-semibold md:text-sm md:hover:bg-green-800 md:hover:text-gray-300`
@@ -65,7 +66,7 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
             </button>
 
             <AnimatePresence>
-              {isOpen && (
+              {isDesOpen && (
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -92,7 +93,7 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
             } md:hidden`}
           >
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => setIsMobOpen(!isMobOpen)}
               className={`${
                 depthLevel === 0 || submenu !== null
                   ? "font-semibold uppercase"
@@ -104,14 +105,14 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
               <span className={`${submenu === null ? "hidden" : null} w-5`}>
                 <ChevronRightIcon
                   className={`${
-                    isOpen ? "rotate-90" : "rotate-0"
+                    isMobOpen ? "rotate-90" : "rotate-0"
                   } duration-200 w-4 h-4`}
                 />
               </span>
               {title}
             </button>
             <AnimatePresence>
-              {isOpen && (
+              {isMobOpen && (
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -124,7 +125,7 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
             </AnimatePresence>
           </li>
           {/* Menu Item for Mobile/Tablet View End */}
-        </div>
+        </>
       ) : (
         <>
           {/* Menu Item Start */}
@@ -134,12 +135,12 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
               className={`${
                 depthLevel === 0
                   ? `${
-                      isOpen
+                      isMobOpen
                         ? "md:border-solid md:border-t-transparent md:border-y-4 md:border-green-800"
                         : ""
                     } md:flex md:items-center md:h-8 md:transition-all md:ease-in-out md:duration-200 md:hover:border-solid md:hover:border-t-transparent md:hover:border-y-4 md:hover:border-green-800`
                   : `${
-                      isOpen
+                      isMobOpen
                         ? "md:font-semibold md:bg-green-800 md:text-gray-300"
                         : ""
                     } md:flex md:justify-between md:w-56 md:py-2 md:px-6 md:font-semibold md:text-sm md:hover:bg-green-800 md:hover:text-gray-300`
