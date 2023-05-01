@@ -1,11 +1,15 @@
 module.exports = {
   stories: ["../**/*.stories.mdx", "../**/*.stories.@(js|jsx|ts|tsx)"],
-  staticDirs: ["../public"],
+  staticDirs: [
+    "../public",
+    { from: "../my-custom-assets/images", to: "/assets" },
+  ],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     "storybook-css-modules-preset",
+    "storybook-addon-next",
     {
       /**
        * Fix Storybook issue with PostCSS@8

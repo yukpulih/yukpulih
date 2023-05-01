@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 
 import Navbar from "../components/navigation/navbar/navbar.component";
+import Hero from "../components/sections/hero/hero.component";
 
 const menu = [
   {
@@ -104,6 +105,7 @@ const Home: NextPage = () => {
       </Head>
 
       <Navbar menu={menu} />
+      <Hero />
     </div>
   );
 };
