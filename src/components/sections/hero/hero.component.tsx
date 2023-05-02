@@ -1,5 +1,5 @@
 import Image from "next/image";
-import heroImg from "public/static/hero-logo-img.png";
+import heroImg from "public/images/hero-logo-img.png";
 import PrimaryBtn from "../../elements/buttons/primary-button.component";
 
 const Hero: React.FC = () => {
