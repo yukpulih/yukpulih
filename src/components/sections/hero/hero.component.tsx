@@ -1,5 +1,5 @@
 import Image from "next/image";
-import heroImg from "public/static/hero-logo-img.png";
+import heroImg from "public/images/hero-logo-img.png";
 import PrimaryBtn from "../../elements/buttons/primary-button.component";
 
 const Hero: React.FC = () => {
@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
     <section id="hero" className="max-w-full">
       <div className="flex flex-col-reverse md:flex-row gap-8 max-w-screen-xl px-14 mx-auto items-center justify-center text-center md:text-left py-12 md:py-24">
         <div className="md:max-w-[50%] lg:pr-8">
-          <h1 className="text-[1.75rem] leading-10 font-serif pb-6">
+          <h1 className="text-xl sm:text-2xl md:text-[1.75rem] md:leading-10 font-serif pb-6">
             We are a non-profit organization with mission to raise awareness of
             porn’s negative effects and help addicts to free themselves from
             porn addiction.

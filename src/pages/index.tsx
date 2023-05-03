@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 
+import Pillars from "src/components/sections/pillars/pillars.component";
 import Navbar from "../components/navigation/navbar/navbar.component";
 import Hero from "../components/sections/hero/hero.component";
 
@@ -106,6 +107,7 @@ const Home: NextPage = () => {
 
       <Navbar menu={menu} />
       <Hero />
+      <Pillars />
     </div>
   );
 };
