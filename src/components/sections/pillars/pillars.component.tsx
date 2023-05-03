@@ -32,7 +32,7 @@ const Pillars: React.FC = () => {
         <h2 className="font-serif text-3xl md:text-[2.5rem] leading-10 ">
           Our pillars
         </h2>
-        <div className="max-w-[1088px] mx-auto flex gap-12 gap-y-20 xl:gap-x-24 justify-around flex-wrap place-content-center py-20">
+        <div className="max-w-[1088px] mx-auto flex gap-12 md:gap-y-20 xl:gap-x-24 justify-around flex-wrap place-content-center py-16 md:py-20">
           {cardContent.map((card) => (
             <Card key={card.id} {...card} />
           ))}
