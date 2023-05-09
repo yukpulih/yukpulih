@@ -47,12 +47,12 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
                       isDesOpen
                         ? "md:border-solid md:border-t-transparent md:border-y-4 md:border-green-800"
                         : ""
-                    } md:flex md:items-center md:h-8 md:transition-all md:ease-in-out md:duration-200 md:hover:border-solid md:hover:border-t-transparent md:hover:border-y-4 md:hover:border-green-800`
+                    } md:flex md:items-center md:h-8 md:transition-all md:ease-in-out md:duration-200 md:hover:border-solid md:hover:border-y-4 md:border-t-transparent md:hover:border-b-green-800 font-medium`
                   : `${
                       isDesOpen
-                        ? "md:font-semibold md:bg-green-800 md:text-gray-300"
+                        ? "md:font-medium md:bg-green-800 md:text-gray-300"
                         : ""
-                    } md:flex md:justify-between md:w-56 md:py-2 md:px-6 md:font-semibold md:text-sm md:hover:bg-green-800 md:hover:text-gray-300`
+                    } md:flex md:justify-between md:w-56 md:py-2 md:px-6 md:font-medium md:text-sm md:hover:bg-green-800 md:hover:text-gray-300`
               }`}
             >
               {title}
@@ -75,7 +75,7 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
                     depthLevel === 0
                       ? "md:top-[60px] md:-ml-6"
                       : "md:ml-56 md:-mt-[48px]"
-                  } md:absolute`}
+                  } md:absolute z-50`}
                 >
                   <SubMenu menu={submenu} depthLevel={depthLevel} />
                 </motion.div>
@@ -96,7 +96,7 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
               onClick={() => setIsMobOpen(!isMobOpen)}
               className={`${
                 depthLevel === 0 || submenu !== null
-                  ? "font-semibold uppercase"
+                  ? "font-medium uppercase"
                   : null
               } ${
                 depthLevel === 0 ? "p-5" : null
@@ -147,12 +147,12 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
                       isMobOpen
                         ? "md:border-solid md:border-t-transparent md:border-y-4 md:border-green-800"
                         : ""
-                    } md:flex md:items-center md:h-8 md:transition-all md:ease-in-out md:duration-200 md:hover:border-solid md:hover:border-t-transparent md:hover:border-y-4 md:hover:border-green-800`
+                    } md:flex md:items-center md:h-8 md:transition-all md:ease-in-out md:duration-200 md:hover:border-solid md:border-t-transparent md:hover:border-y-4 md:hover:border-b-green-800 font-medium`
                   : `${
                       isMobOpen
-                        ? "md:font-semibold md:bg-green-800 md:text-gray-300"
+                        ? "md:font-medium md:bg-green-800 md:text-gray-300"
                         : ""
-                    } md:flex md:justify-between md:w-56 md:py-2 md:px-6 md:font-semibold md:text-sm md:hover:bg-green-800 md:hover:text-gray-300`
+                    } md:flex md:justify-between md:w-56 md:py-2 md:px-6 md:font-medium md:text-sm md:hover:bg-green-800 md:hover:text-gray-300`
               }`}
             >
               {title}
@@ -171,7 +171,7 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
             <a
               className={`${
                 depthLevel === 0 || submenu !== null
-                  ? "font-semibold uppercase"
+                  ? "font-medium uppercase"
                   : null
               } ${
                 depthLevel === 0 ? "p-5" : null

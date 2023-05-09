@@ -6,7 +6,7 @@ import {
   MagnifyingGlassIcon,
   XMarkIcon,
 } from "@heroicons/react/24/solid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import LoginButton from "./login-button.component";
 import Menu from "./menu/menu.component";
@@ -24,8 +24,12 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
   const [isMobOpen, setIsMobOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
+  useEffect(() => {
+    document.body.style.overflow = isMobOpen ? "hidden" : "";
+  }, [isMobOpen]);
+
   return (
-    <nav className="flex items-center bg-white text-green-900 border-solid border-b-[1px] border-gray-300 h-[60px]">
+    <nav className="flex items-center bg-white text-green-900 border-solid border-b-[1px] border-gray-300 h-[60px] font-button">
       {/* Container Start */}
       <div className="container mx-auto px-5 max-w-[1200px] flex items-center  justify-between">
         {/* Title & Logo Start */}
@@ -37,13 +41,13 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
             width={28}
             height={28}
           />
-          <span className="text-lg ml-2 font-bold">Yuk Pulih</span>
+          <span className="text-lg md:text-2xl ml-2 font-bold">Yuk Pulih</span>
         </div>
         {/* Title & Logo End */}
 
         {/* Menu Start */}
         {!isSearchOpen && (
-          <div className="md:flex hidden md:items-center md:text-small md:gap-2">
+          <div className="md:flex hidden md:items-center md:gap-5 md:text-base">
             {menu.map((item, index) => {
               return (
                 <Menu
@@ -73,7 +77,9 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
                   onClick={() => setIsSearchOpen(!isSearchOpen)}
                   className="cursor-pointer flex items-center justify-between gap-2 w-32 px-3 h-8 bg-gray-200 hover:bg-gray-300 border border-solid border-gray-200 rounded-lg"
                 >
-                  <span className="text-green-900 font-medium">Search</span>
+                  <span className="text-green-900 font-medium text-base">
+                    Search
+                  </span>
                   <MagnifyingGlassIcon className="h-5 w-5 text-green-900" />
                 </button>
                 <LoginButton />
@@ -132,7 +138,7 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="md:hidden absolute left-0 top-0 bottom-0 right-0 my-[60px] w-full"
+              className="md:hidden absolute left-0 top-0 bottom-0 right-0 mt-[60px] w-full h-screen bg-white z-50"
             >
               {menu.map((item, index) => {
                 return (
