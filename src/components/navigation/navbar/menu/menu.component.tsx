@@ -47,7 +47,7 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
                       isDesOpen
                         ? "md:border-solid md:border-t-transparent md:border-y-4 md:border-green-800"
                         : ""
-                    } md:flex md:items-center md:h-8 md:transition-all md:ease-in-out md:duration-200 md:hover:border-solid md:hover:border-t-transparent md:hover:border-y-4 md:hover:border-green-800`
+                    } md:flex md:items-center md:h-8 md:transition-all md:ease-in-out md:duration-200 md:hover:border-solid md:hover:border-y-4 md:border-t-transparent md:hover:border-b-green-800`
                   : `${
                       isDesOpen
                         ? "md:font-semibold md:bg-green-800 md:text-gray-300"
@@ -75,7 +75,7 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
                     depthLevel === 0
                       ? "md:top-[60px] md:-ml-6"
                       : "md:ml-56 md:-mt-[48px]"
-                  } md:absolute`}
+                  } md:absolute z-50`}
                 >
                   <SubMenu menu={submenu} depthLevel={depthLevel} />
                 </motion.div>
@@ -147,7 +147,7 @@ const Menu: React.FC<MenuProps> = ({ title, url, submenu, depthLevel }) => {
                       isMobOpen
                         ? "md:border-solid md:border-t-transparent md:border-y-4 md:border-green-800"
                         : ""
-                    } md:flex md:items-center md:h-8 md:transition-all md:ease-in-out md:duration-200 md:hover:border-solid md:hover:border-t-transparent md:hover:border-y-4 md:hover:border-green-800`
+                    } md:flex md:items-center md:h-8 md:transition-all md:ease-in-out md:duration-200 md:hover:border-solid md:border-t-transparent md:hover:border-y-4 md:hover:border-b-green-800`
                   : `${
                       isMobOpen
                         ? "md:font-semibold md:bg-green-800 md:text-gray-300"

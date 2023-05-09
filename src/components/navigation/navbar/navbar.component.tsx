@@ -6,7 +6,7 @@ import {
   MagnifyingGlassIcon,
   XMarkIcon,
 } from "@heroicons/react/24/solid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import LoginButton from "./login-button.component";
 import Menu from "./menu/menu.component";
@@ -23,6 +23,10 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
   const depthLevel = 0;
   const [isMobOpen, setIsMobOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = isMobOpen ? "hidden" : "";
+  }, [isMobOpen]);
 
   return (
     <nav className="flex items-center bg-white text-green-900 border-solid border-b-[1px] border-gray-300 h-[60px]">
@@ -132,7 +136,7 @@ const Navbar: React.FC<NavbarProps> = ({ menu }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="md:hidden absolute left-0 top-0 bottom-0 right-0 my-[60px] w-full"
+              className="md:hidden absolute left-0 top-0 bottom-0 right-0 mt-[60px] w-full h-screen bg-white z-50"
             >
               {menu.map((item, index) => {
                 return (
