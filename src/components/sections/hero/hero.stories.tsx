@@ -4,6 +4,10 @@ import Hero from "./hero.component";
 export default {
   title: "sections/Hero",
   component: Hero,
+  parameters: {
+    // layout options: "padded", "centered", and "fullscreen"
+    layout: "padded",
+  },
   argTypes: {},
 } as ComponentMeta<typeof Hero>;
 

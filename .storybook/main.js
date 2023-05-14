@@ -1,9 +1,6 @@
 module.exports = {
   stories: ["../**/*.stories.mdx", "../**/*.stories.@(js|jsx|ts|tsx)"],
-  staticDirs: [
-    "../public",
-    { from: "../my-custom-assets/images", to: "/assets" },
-  ],
+  staticDirs: ["../public"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",

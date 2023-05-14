@@ -5,6 +5,10 @@ import { MockBaseTemplateProps } from "./base-template.mocks";
 export default {
   title: "templates/BaseTemplate",
   component: BaseTemplate,
+  parameters: {
+    // layout options: "padded", "centered", and "fullscreen"
+    layout: "padded",
+  },
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {},
 } as ComponentMeta<typeof BaseTemplate>;

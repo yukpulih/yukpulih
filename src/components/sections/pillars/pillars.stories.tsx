@@ -4,6 +4,10 @@ import Pillars from "./pillars.component";
 export default {
   title: "sections/Pillars",
   component: Pillars,
+  parameters: {
+    // layout options: "padded", "centered", and "fullscreen"
+    layout: "fullscreen",
+  },
   argTypes: {},
 } as ComponentMeta<typeof Pillars>;
 

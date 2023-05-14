@@ -5,6 +5,10 @@ import { MockNavbarProps } from "./navbar.mocks";
 export default {
   title: "navigation/Navbar",
   component: Navbar,
+  parameters: {
+    // layout options: "padded", "centered", and "fullscreen"
+    layout: "fullscreen",
+  },
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {},
 } as ComponentMeta<typeof Navbar>;

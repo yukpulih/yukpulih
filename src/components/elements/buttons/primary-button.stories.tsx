@@ -5,6 +5,10 @@ import { MockPrimaryBtnProps } from "./primary-button.mocks";
 export default {
   title: "buttons/PrimaryButton",
   component: PrimaryBtn,
+  parameters: {
+    // options "padded", "centered", and "fullscreen"
+    layout: "padded",
+  },
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {},
 } as ComponentMeta<typeof PrimaryBtn>;
